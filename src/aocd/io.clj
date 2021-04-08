@@ -28,8 +28,11 @@
   (log/info "Input cached"))
 
 (defn load-input
-  "Attempt to load input as String"
+  "Attempt to load input as String,
+  when input file is not found return nil"
   [year day]
-  (let [input (slurp (input-path year day))]
-    (log/info "Input loaded from cache")
-    input))
+  (try
+    (let [input (slurp (input-path year day))]
+      (log/info "Input loaded from cache")
+      input)
+    (catch java.io.FileNotFoundException _ (log/error "Could not load input"))))

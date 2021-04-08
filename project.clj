@@ -1,4 +1,4 @@
-(defproject aocd "0.1.0"
+(defproject aocd "0.1.1-SNAPSHOT"
   :description "Load and cache your aoc inputs"
   :url "https://github.com/Thomashrb/advent-of-code-data"
   :license {:name "The MIT License"

@@ -3,12 +3,11 @@
             [aocd.io :as io]))
 
 (defn input
-  "Attempt to load `String` input from cache if not exists
+  "Attempt to load String input from cache if not exists
   request input from api to cache then load it"
   [year day]
-  (let [token (io/load-token)]
-    (try (io/load-input year day)
-         (catch java.io.FileNotFoundException _
-           (->> (api/req-input year day token)
-                (io/save-input year day))
-           (io/load-input year day)))))
+  (or (io/load-input year day)
+      (let [token (io/load-token)
+            input (api/req-input year day token)]
+        (io/save-input year day input) ; Cache the result
+        input)))
