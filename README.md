@@ -25,7 +25,7 @@ _that is in turn based on a [python library](https://github.com/wimglenn/advent-
 Leiningen/Boot:
 
 ```clojure
-[aocd "0.1.0"]
+[aocd "0.1.1"]
 ```
 
 ### Setup
